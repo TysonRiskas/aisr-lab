@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AISR Lab — Applied Intelligence & Systems Research</title>
+  <meta name="description" content="Investigating failure states, context engineering, and workflow interoperability in applied artificial intelligence." />
+  <style>
+    :root {
+      --bg: #fcfbf9;
+      --text: #1a1a1a;
+      --text-muted: #666666;
+      --border: #e5e5e5;
+      --accent: #111111;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      font-size: 16px;
+      padding: 60px 24px 100px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 48px;
+    }
+
+    .masthead-logo {
+      width: 140px;
+      height: auto;
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+
+    .director-meta {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: #2b2b2b;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 40px 0;
+    }
+
+    h2 {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .thrust-list {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .thrust-item {
+      margin-bottom: 20px;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .thrust-item::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    .thrust-item strong {
+      display: block;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .thrust-item span {
+      font-size: 14.5px;
+      color: var(--text-muted);
+    }
+
+    .advisory-box {
+      border: 1px solid var(--border);
+      padding: 24px;
+      background: #ffffff;
+      border-radius: 4px;
+    }
+
+    .advisory-box p {
+      font-size: 14.5px;
+      margin-bottom: 12px;
+    }
+
+    .contact-link {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+      margin-top: 8px;
+    }
+
+    .contact-link:hover {
+      opacity: 0.7;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <header>
+      <img src="logo.svg" alt="AISR Lab Logo" class="masthead-logo" />
+      <h1>Applied Intelligence & Systems Research Lab</h1>
+      <div class="director-meta">Dr. Tyson Riskas — Principal Investigator & Faculty Lead</div>
+      <p>
+        AISR Lab studies the operational reality of artificial intelligence: how autonomous workflows, structured context, and local models survive contact with legacy software, messy data, and human oversight.
+      </p>
+      <p>
+        While modern AI research often evaluates models in sterile benchmarks, our work focuses on the operational failure points—state-loss in cross-system pipelines, context drift, and the engineering required to build durable, private-first tools.
+      </p>
+    </header>
+
+    <hr />
+
+    <section>
+      <h2>Core Research Thrusts</h2>
+      <ul class="thrust-list">
+        <li class="thrust-item">
+          <strong>Context Architecture & Domain Schemas</strong>
+          <span>Formalizing data boundaries and ontological structures to anchor model generation in specialized environments.</span>
+        </li>
+        <li class="thrust-item">
+          <strong>Workflow Interoperability & Failure Recovery</strong>
+          <span>Investigating state retention and error recovery when autonomous pipelines bridge disparate, cross-platform software.</span>
+        </li>
+        <li class="thrust-item">
+          <strong>Evaluative AI & Human-in-the-Loop Systems</strong>
+          <span>Designing objective evaluation architectures for scoring, institutional validation, and authentic assessment.</span>
+        </li>
+      </ul>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>Selective Advisory & Architecture Reviews</h2>
+      <div class="advisory-box">
+        <p>
+          Alongside academic teaching and research, the Lab accepts a small number of outside technical advisory engagements each semester.
+        </p>
+        <p>
+          Work is strictly limited to independent architecture reviews, pipeline failure-state audits, and context engineering strategy for engineering teams building non-trivial AI workflows.
+        </p>
+        <a href="mailto:director@aisrlab.org" class="contact-link">director@aisrlab.org</a>
+      </div>
+    </section>
+
+    <footer>
+      AISR LAB — APPLIED INTELLIGENCE & SYSTEMS RESEARCH
+    </footer>
+  </main>
+
+</body>
+</html>
