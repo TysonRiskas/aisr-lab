@@ -60,7 +60,7 @@
       color: var(--bg);
     }
 
-    /* Ambient Topological Canvas */
+    /* Ambient Canvas */
     #canvas-bg {
       position: fixed;
       top: 0;
@@ -360,6 +360,7 @@
       border-bottom: 1px solid var(--ink);
       padding-bottom: 3px;
       transition: border-color 0.3s ease, color 0.3s ease;
+      cursor: pointer;
     }
 
     .inquiry-link:hover {
@@ -368,128 +369,144 @@
     }
 
     /* =========================================================
-       DIAGNOSTIC RUBRIC & AUDIT INTAKE SECTION (INTEGRATED)
+       ELEGANT INQUIRY & ARCHITECTURE DOSSIER SECTION
        ========================================================= */
-    .rubric-section {
+    .intake-section {
       padding: 6.5rem 0 8.5rem;
       border-top: 1px solid var(--border);
     }
 
-    .rubric-grid {
+    .intake-grid {
       display: grid;
       grid-template-columns: 1fr 1.4fr;
-      gap: 4.5rem;
-      margin-top: 3rem;
+      gap: 5rem;
+      margin-top: 3.5rem;
     }
 
     @media (max-width: 960px) {
-      .rubric-grid {
+      .intake-grid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 3.5rem;
       }
     }
 
-    /* Left: The Rubric Criteria Specs */
-    .rubric-meta h3 {
+    /* Left Narrative Column */
+    .intake-meta h3 {
       font-family: var(--font-serif);
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       font-weight: 300;
-      line-height: 1.2;
+      line-height: 1.18;
       color: var(--ink);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
     }
 
-    .rubric-meta p {
-      font-size: 0.98rem;
-      line-height: 1.8;
+    .intake-meta p {
+      font-size: 1.02rem;
+      line-height: 1.85;
       color: var(--ink-secondary);
       margin-bottom: 2rem;
     }
 
-    .criteria-stack {
+    .protocol-notes {
       border-top: 1px solid var(--border);
-      margin-top: 2rem;
+      padding-top: 2rem;
+      margin-top: 2.5rem;
     }
 
-    .criteria-item {
-      padding: 1.4rem 0;
-      border-bottom: 1px solid var(--border);
+    .protocol-note {
+      margin-bottom: 1.6rem;
     }
 
-    .criteria-header {
-      display: flex;
-      justify-content: space-between;
+    .protocol-label {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--ink-muted);
       margin-bottom: 0.4rem;
     }
 
-    .criteria-desc {
-      font-size: 0.88rem;
+    .protocol-detail {
+      font-size: 0.92rem;
+      color: var(--ink);
+      font-weight: 300;
       line-height: 1.6;
-      color: var(--ink-secondary);
     }
 
-    /* Right: The High-Friction Technical Form */
-    .rubric-form-card {
+    /* Right Form Column: Minimal Architectural Inputs */
+    .intake-form-pane {
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 3rem;
+      padding: 3.8rem 3.2rem;
       position: relative;
     }
 
     @media (max-width: 640px) {
-      .rubric-form-card {
-        padding: 2rem 1.5rem;
+      .intake-form-pane {
+        padding: 2.2rem 1.8rem;
       }
     }
 
-    .form-group {
-      margin-bottom: 2rem;
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
     }
 
-    .form-group label {
+    @media (max-width: 640px) {
+      .field-row {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    .form-field {
+      margin-bottom: 2.8rem;
+      position: relative;
+    }
+
+    .field-row .form-field {
+      margin-bottom: 0;
+    }
+
+    .form-field label {
       display: block;
       font-family: var(--font-mono);
       font-size: 0.68rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--ink);
-      margin-bottom: 0.6rem;
-    }
-
-    .form-group .helper-text {
-      display: block;
-      font-size: 0.78rem;
-      color: var(--ink-muted);
-      margin-bottom: 0.6rem;
-      font-style: italic;
+      margin-bottom: 0.8rem;
     }
 
     .form-control {
       width: 100%;
-      background: var(--surface-subtle);
-      border: 1px solid var(--border);
-      padding: 0.9rem 1.1rem;
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 0;
+      font-family: var(--font-sans);
+      font-size: 0.98rem;
+      font-weight: 300;
       color: var(--ink);
       border-radius: 0;
       outline: none;
-      transition: border-color 0.3s ease, background 0.3s ease;
+      transition: border-color 0.3s ease;
     }
 
     .form-control:focus {
-      border-color: var(--ink);
-      background: var(--surface);
+      border-bottom-color: var(--ink);
     }
 
     textarea.form-control {
       resize: vertical;
-      line-height: 1.6;
+      min-height: 80px;
+      line-height: 1.7;
+    }
+
+    .form-action {
+      margin-top: 3.5rem;
     }
 
     .submit-btn {
@@ -497,10 +514,10 @@
       background: var(--ink);
       color: var(--bg);
       border: 1px solid var(--ink);
-      padding: 1.1rem;
+      padding: 1.2rem;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease;
@@ -512,15 +529,19 @@
     }
 
     .submit-btn:disabled {
-      opacity: 0.5;
+      opacity: 0.4;
       cursor: not-allowed;
     }
 
-    .status-msg {
-      margin-top: 1.5rem;
+    .confirmation-pane {
+      margin-top: 2rem;
+      padding: 1.8rem;
+      border: 1px solid var(--border);
+      background: var(--surface-subtle);
       font-family: var(--font-mono);
-      font-size: 0.75rem;
-      line-height: 1.6;
+      font-size: 0.78rem;
+      line-height: 1.7;
+      color: var(--ink);
       display: none;
     }
 
@@ -571,7 +592,7 @@
         <nav class="meta-nav">
           <a href="#investigation">Vectors</a>
           <a href="#advisory">Advisory</a>
-          <a href="#diagnostic">Diagnostic Rubric</a>
+          <a href="#inquiry">Inquiry Protocol</a>
         </nav>
       </div>
     </div>
@@ -650,105 +671,77 @@
           </p>
           <div class="advisory-meta">
             <span>2-Week Sprints &middot; Independent Review</span>
-            <a href="#diagnostic" class="inquiry-link">Submit Technical Intake &rarr;</a>
+            <a href="#inquiry" class="inquiry-link">Initiate Dialogue &rarr;</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Intake Diagnostic Rubric Section -->
-    <section class="rubric-section" id="diagnostic">
+    <!-- Architecture Inquiry Protocol Section (Clean, Uncluttered, Pure Form) -->
+    <section class="intake-section" id="inquiry">
       <div class="section-header">
-        <span class="section-title">Architecture Audit Protocol</span>
-        <span class="section-title">Diagnostic Intake</span>
+        <span class="section-title">Advisory Inquiries</span>
+        <span class="section-title">Architecture Dossier</span>
       </div>
 
-      <div class="rubric-grid">
-        <!-- Rubric Criteria Specification -->
-        <div class="rubric-meta">
-          <h3>Inbound Triage &amp; Qualification Rubric</h3>
+      <div class="intake-grid">
+        <!-- Narrative Context -->
+        <div class="intake-meta">
+          <h3>Independent Technical Review</h3>
           <p>
-            Advisory engagements are strictly limited to independent failure-state analysis and context boundary verification. Inquiries are scored automatically against our technical intake rubric prior to review.
+            Advisory engagements are structured as focused, two-week technical sprints examining context boundary integrity, multi-agent state persistence, and evaluative grading harnesses.
+          </p>
+          <p>
+            Each submission is reviewed directly by the research office. If the system architecture presents non-trivial failure modes aligned with our current research vectors, we provide a formal memo scope within two business days.
           </p>
 
-          <div class="criteria-stack">
-            <div class="criteria-item">
-              <div class="criteria-header">
-                <span>01. Technical Specificity</span>
-                <span>25 PTS</span>
-              </div>
-              <div class="criteria-desc">
-                Explicit description of active model runtimes, orchestration engines (LangGraph, custom state machines, local Ollama/vLLM), and persistent datastores.
-              </div>
+          <div class="protocol-notes">
+            <div class="protocol-note">
+              <div class="protocol-label">Direct Interface</div>
+              <div class="protocol-detail">Conducted with CTOs, Heads of AI, and Principal Architects.</div>
             </div>
-
-            <div class="criteria-item">
-              <div class="criteria-header">
-                <span>02. Research Alignment</span>
-                <span>25 PTS</span>
-              </div>
-              <div class="criteria-desc">
-                Problem spaces rooted in context degradation, state boundary loss, multi-agent deadlocks, or deterministic validation gates.
-              </div>
-            </div>
-
-            <div class="criteria-item">
-              <div class="criteria-header">
-                <span>03. Independent Advisory Scope</span>
-                <span>25 PTS</span>
-              </div>
-              <div class="criteria-desc">
-                Clear structural inquiry for an architecture review. We do not provide outsourced application development or staffing augmentation.
-              </div>
-            </div>
-
-            <div class="criteria-item">
-              <div class="criteria-header">
-                <span>04. Engineering Authority</span>
-                <span>25 PTS</span>
-              </div>
-              <div class="criteria-desc">
-                Direct submission from technical leadership (CTO, VP of Engineering, Lead Architect, or Technical Co-founder).
-              </div>
+            <div class="protocol-note">
+              <div class="protocol-label">Scope Boundary</div>
+              <div class="protocol-detail">Architecture reviews and risk audits; no outsourced engineering or staffing.</div>
             </div>
           </div>
         </div>
 
-        <!-- Submission Form (Direct n8n / Webhook Target) -->
-        <div class="rubric-form-card">
-          <form id="diagnostic-form">
-            <div class="form-group">
-              <label for="submitter_role">Technical Role &amp; Organization</label>
-              <span class="helper-text">e.g., VP of Engineering, Lead Systems Architect</span>
-              <input type="text" id="submitter_role" name="role_org" class="form-control" required placeholder="CTO / System Lead @ Org" />
+        <!-- Architectural Form (Zero Placeholder Text, Clean Line Styling) -->
+        <div class="intake-form-pane">
+          <form id="inquiry-form">
+            <div class="field-row">
+              <div class="form-field">
+                <label for="submitter_role">Technical Role &amp; Organization</label>
+                <input type="text" id="submitter_role" name="role_org" class="form-control" required spellcheck="false" />
+              </div>
+
+              <div class="form-field">
+                <label for="submitter_email">Work Email</label>
+                <input type="email" id="submitter_email" name="email" class="form-control" required spellcheck="false" />
+              </div>
             </div>
 
-            <div class="form-group">
-              <label for="submitter_email">Work Email</label>
-              <input type="email" id="submitter_email" name="email" class="form-control" required placeholder="lead@domain.com" />
+            <div class="form-field">
+              <label for="system_topology">System Topology &amp; Runtime Environment</label>
+              <textarea id="system_topology" name="topology" rows="3" class="form-control" required spellcheck="false"></textarea>
             </div>
 
-            <div class="form-group">
-              <label for="system_topology">System Topology &amp; Runtime</label>
-              <span class="helper-text">Detail your model layers (cloud/local), orchestration logic, and state stores.</span>
-              <textarea id="system_topology" name="topology" rows="3" class="form-control" required placeholder="e.g., Local Qwen 2.5 on vLLM, custom Python state loop, Postgres/pgvector..."></textarea>
+            <div class="form-field">
+              <label for="failure_mode">Primary Failure Mode or State Degradation</label>
+              <textarea id="failure_mode" name="failure_state" rows="3" class="form-control" required spellcheck="false"></textarea>
             </div>
 
-            <div class="form-group">
-              <label for="failure_mode">Observed Failure Mode &amp; Drift</label>
-              <span class="helper-text">Where does degradation occur? (e.g., state loss across tool transitions, context bloat, hallucination).</span>
-              <textarea id="failure_mode" name="failure_state" rows="4" class="form-control" required placeholder="Describe specific boundary or serialization failures..."></textarea>
-            </div>
-
-            <div class="form-group">
+            <div class="form-field">
               <label for="engagement_objective">Core Validation Objective</label>
-              <span class="helper-text">What architecture decision requires independent evaluation within 30 days?</span>
-              <textarea id="engagement_objective" name="objective" rows="2" class="form-control" required placeholder="e.g., Validating schema boundaries prior to production deployment..."></textarea>
+              <textarea id="engagement_objective" name="objective" rows="2" class="form-control" required spellcheck="false"></textarea>
             </div>
 
-            <button type="submit" id="submit-btn" class="submit-btn">Transmitting Specification &rarr;</button>
+            <div class="form-action">
+              <button type="submit" id="submit-btn" class="submit-btn">Submit Architecture Dossier &rarr;</button>
+            </div>
 
-            <div id="status-box" class="status-msg"></div>
+            <div id="confirmation-pane" class="confirmation-pane"></div>
           </form>
         </div>
       </div>
@@ -846,19 +839,19 @@
     init();
     animate();
 
-    // Diagnostic Form Submission Logic (n8n Webhook Hookup)
-    const form = document.getElementById('diagnostic-form');
+    // Intake Form Submission to n8n Webhook
+    const form = document.getElementById('inquiry-form');
     const submitBtn = document.getElementById('submit-btn');
-    const statusBox = document.getElementById('status-box');
+    const confirmationPane = document.getElementById('confirmation-pane');
 
-    // Replace with your actual n8n production webhook URL
-    const N8N_WEBHOOK_URL = 'https://n8n.yourdomain.com/webhook/aisr-intake-rubric';
+    // Replace with your n8n production webhook endpoint
+    const N8N_WEBHOOK_URL = 'https://n8n.yourdomain.com/webhook/aisr-intake';
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       submitBtn.disabled = true;
-      submitBtn.innerText = 'TRANSMITTING SPECIFICATION...';
-      statusBox.style.display = 'none';
+      submitBtn.innerText = 'Transmitting Dossier...';
+      confirmationPane.style.display = 'none';
 
       const payload = {
         role_org: document.getElementById('submitter_role').value,
@@ -870,26 +863,21 @@
       };
 
       try {
-        const response = await fetch(N8N_WEBHOOK_URL, {
+        await fetch(N8N_WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
 
         form.reset();
-        submitBtn.innerText = 'SUBMIT ARCHITECTURE SPECIFICATION →';
-        submitBtn.disabled = false;
-        
-        statusBox.style.display = 'block';
-        statusBox.style.color = 'var(--ink)';
-        statusBox.innerHTML = '<strong>SPECIFICATION INTAKE CONFIRMED.</strong><br/>Your submission has been cataloged for evaluative triage. High-signal architectures aligning with active research thrusts receive a formal audit memo outline within 48 hours.';
+        submitBtn.style.display = 'none';
+        confirmationPane.style.display = 'block';
+        confirmationPane.innerHTML = '<strong>DOSSIER TRANSMISSION CONFIRMED</strong><br/>The architecture profile has been logged with the research office. If the system parameters align with our current advisory window, a formal scope memo will be dispatched within two business days.';
       } catch (err) {
-        // Graceful fallback for local development or disconnected webhook
         submitBtn.disabled = false;
-        submitBtn.innerText = 'SUBMIT ARCHITECTURE SPECIFICATION →';
-        statusBox.style.display = 'block';
-        statusBox.style.color = 'var(--accent)';
-        statusBox.innerHTML = 'Direct endpoint offline. Forward architectural parameters directly to <strong>contact@aisrlab.org</strong>.';
+        submitBtn.innerText = 'Submit Architecture Dossier →';
+        confirmationPane.style.display = 'block';
+        confirmationPane.innerHTML = 'Transmission endpoint unavailable. Forward architectural parameters directly to <strong>contact@aisrlab.org</strong>.';
       }
     });
   </script>
