@@ -4,31 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AISR LAB — Applied Intelligence & Systems Research</title>
-  <meta name="description" content="Applied systems research in context engineering, workflow interoperability, and evaluative AI architectures." />
-  
+  <meta name="description" content="An applied research laboratory investigating context engineering, workflow interoperability, and evaluative AI architectures." />
+
+  <!-- Typography: Fraunces (Sculptural Serif) + Plus Jakarta Sans (Editorial Modern) + Space Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #06080d;
-      --bg-alt: #0a0e17;
-      --panel: rgba(14, 20, 32, 0.75);
-      --panel-border: rgba(255, 255, 255, 0.08);
-      --panel-border-hover: rgba(56, 189, 248, 0.35);
+      --bg: #f7f5f0;            /* Warm unbleached bone / raw canvas */
+      --surface: #ede9e0;       /* Natural stone / limestone plate */
+      --surface-hover: #e5e0d4; /* Warm clay paper */
+      --surface-subtle: #faf9f6;
       
-      --cyan: #38bdf8;
-      --cyan-glow: rgba(56, 189, 248, 0.15);
-      --emerald: #10b981;
+      --border: rgba(30, 28, 25, 0.12);
+      --border-dark: rgba(30, 28, 25, 0.35);
       
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #475569;
+      --text: #1e1c19;          /* Deep umber graphite */
+      --text-muted: #5e5953;    /* Muted soil / dry silt */
+      --text-dim: #8e877e;      /* Pale lichen / dried grass */
       
-      --font-display: 'Space Grotesk', -apple-system, sans-serif;
-      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --terracotta: #a44a33;    /* Burnt sienna / terracotta stamp */
+      --sage: #5b6957;          /* Dry sage / botanical green */
+      
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'Space Mono', monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -37,46 +39,43 @@
     body {
       background-color: var(--bg);
       color: var(--text);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      overflow-x: hidden;
+      font-family: var(--font-body);
+      line-height: 1.65;
+      font-size: 15px;
       -webkit-font-smoothing: antialiased;
+      position: relative;
     }
 
-    /* Ambient Blueprint Grid & Glow */
-    .bg-canvas {
+    /* Subtle Paper Texture Overlay */
+    body::before {
+      content: '';
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       pointer-events: none;
-      z-index: 0;
-      background-image: 
-        radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.07) 0%, transparent 40%),
-        radial-gradient(circle at 10% 80%, rgba(14, 165, 233, 0.04) 0%, transparent 40%),
-        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    /* Full-Width Navigation Bar */
-    header.global-nav {
+    /* Masthead Navigation */
+    header.gallery-nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      width: 100%;
-      background: rgba(6, 8, 13, 0.85);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--panel-border);
+      background: rgba(247, 245, 240, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 4vw;
-      height: 72px;
+      height: 76px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
       text-decoration: none;
       color: var(--text);
     }
@@ -86,663 +85,638 @@
       height: 38px;
     }
 
-    .brand-text {
+    .brand-meta {
       display: flex;
       flex-direction: column;
     }
 
     .brand-title {
       font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 16px;
-      letter-spacing: 0.12em;
-      color: #ffffff;
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      color: var(--text);
     }
 
     .brand-sub {
       font-family: var(--font-mono);
       font-size: 9.5px;
-      letter-spacing: 0.14em;
-      color: var(--cyan);
+      letter-spacing: 0.16em;
+      color: var(--terracotta);
       text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 36px;
       list-style: none;
     }
 
     .nav-links a {
       font-family: var(--font-mono);
-      font-size: 12px;
-      letter-spacing: 0.05em;
+      font-size: 11px;
+      letter-spacing: 0.1em;
       color: var(--text-muted);
       text-decoration: none;
-      transition: color 0.15s;
+      text-transform: uppercase;
+      transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: #ffffff; }
+    .nav-links a:hover { color: var(--text); }
 
     .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      border: 1px solid var(--border-dark);
+      padding: 9px 20px;
+      border-radius: 2px;
       font-family: var(--font-mono);
-      font-size: 11.5px;
-      color: #0c0e12 !important;
-      background: #ffffff;
-      padding: 8px 16px;
-      border-radius: 4px;
-      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text) !important;
       text-decoration: none;
-      transition: background 0.15s ease, transform 0.15s ease;
+      transition: all 0.2s ease;
     }
 
     .nav-cta:hover {
-      background: var(--cyan);
-      transform: translateY(-1px);
+      background: var(--text);
+      color: var(--bg) !important;
     }
 
-    /* Main Container (Full Width Bleed) */
-    main {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-    }
+    /* Main Container */
+    main { width: 100%; }
 
-    /* Hero Section (Split Viewport) */
-    .hero-section {
+    /* Editorial Hero Section */
+    .hero-exhibit {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      min-height: calc(90vh - 72px);
-      padding: 60px 4vw;
-      border-bottom: 1px solid var(--panel-border);
-      align-items: center;
-      gap: 4vw;
+      min-height: calc(88vh - 76px);
+      border-bottom: 1px solid var(--border);
     }
 
-    .hero-content {
-      max-width: 760px;
-    }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: #34d399;
-      margin-bottom: 28px;
-    }
-
-    .status-pulse {
-      width: 6px;
-      height: 6px;
-      background: var(--emerald);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--emerald);
-    }
-
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(38px, 4.5vw, 64px);
-      line-height: 1.05;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-      color: #ffffff;
-    }
-
-    .hero-title span {
-      background: linear-gradient(135deg, #ffffff 40%, var(--cyan) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(16px, 1.2vw, 19px);
-      color: var(--text-muted);
-      line-height: 1.6;
-      font-weight: 400;
-      margin-bottom: 36px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .btn-primary {
-      background: var(--cyan);
-      color: #06080d;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 700;
-      padding: 14px 28px;
-      border-radius: 4px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 24px rgba(56, 189, 248, 0.4);
-    }
-
-    .btn-outline {
-      border: 1px solid var(--panel-border);
-      background: var(--panel);
-      color: #ffffff;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      padding: 14px 24px;
-      border-radius: 4px;
-      text-decoration: none;
-      transition: border-color 0.2s;
-    }
-
-    .btn-outline:hover {
-      border-color: #64748b;
-    }
-
-    /* Interactive Pipeline Simulation Graphic */
-    .system-harness {
-      background: var(--bg-alt);
-      border: 1px solid var(--panel-border);
-      border-radius: 8px;
-      padding: 28px;
-      position: relative;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    }
-
-    .harness-header {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--panel-border);
-      padding-bottom: 16px;
-      margin-bottom: 24px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-dim);
-    }
-
-    .node-stack {
+    .hero-text-pane {
+      padding: 8vw 5vw 6vw 4vw;
+      border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      position: relative;
-    }
-
-    .system-node {
-      background: var(--panel);
-      border: 1px solid var(--panel-border);
-      border-radius: 6px;
-      padding: 14px 18px;
-      display: flex;
       justify-content: space-between;
-      align-items: center;
-      transition: all 0.2s;
     }
 
-    .system-node:hover {
-      border-color: var(--cyan);
-      transform: translateX(4px);
-    }
-
-    .node-meta {
+    .curator-stamp {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 32px;
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
-    .node-status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 2px;
-      background: var(--cyan);
+    .curator-stamp::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
     }
 
-    .node-title {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: #ffffff;
-      font-weight: 500;
-    }
-
-    .node-tag {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--cyan);
-      background: var(--cyan-glow);
-      padding: 4px 8px;
-      border-radius: 3px;
-    }
-
-    /* Metric Ticker / Telemetry Bar */
-    .telemetry-band {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-bottom: 1px solid var(--panel-border);
-      background: var(--bg-alt);
-    }
-
-    .telemetry-cell {
-      padding: 24px 4vw;
-      border-right: 1px solid var(--panel-border);
-    }
-
-    .telemetry-cell:last-child { border-right: none; }
-
-    .telemetry-label {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      color: var(--text-dim);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    .telemetry-value {
+    .hero-title {
       font-family: var(--font-display);
-      font-size: 24px;
-      font-weight: 700;
-      color: #ffffff;
+      font-size: clamp(40px, 4.5vw, 68px);
+      line-height: 1.05;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+      color: var(--text);
     }
 
-    /* Research Thrusts (3-Column Full Spread) */
-    .section-full {
-      padding: 100px 4vw;
-      border-bottom: 1px solid var(--panel-border);
+    .hero-title em {
+      font-style: italic;
+      font-family: var(--font-display);
+      font-weight: 400;
+      color: var(--terracotta);
     }
 
-    .section-meta-row {
+    .hero-statement {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin-bottom: 40px;
+      font-weight: 400;
+    }
+
+    .hero-meta-row {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 48px;
-    }
-
-    .section-eyebrow {
+      gap: 48px;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--cyan);
-      letter-spacing: 0.16em;
+      color: var(--text-dim);
       text-transform: uppercase;
-      margin-bottom: 8px;
+      letter-spacing: 0.08em;
     }
 
-    .section-headline {
-      font-family: var(--font-display);
-      font-size: 32px;
-      font-weight: 700;
-      color: #ffffff;
+    .hero-meta-row span strong {
+      color: var(--text);
+      display: block;
+      font-size: 13px;
+      margin-top: 4px;
+      font-family: var(--font-body);
+      font-weight: 600;
     }
 
-    .thrusts-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .thrust-box {
-      background: var(--bg-alt);
-      border: 1px solid var(--panel-border);
-      border-radius: 8px;
-      padding: 36px 30px;
+    /* Gallery Exhibition Plate (Visual Composition) */
+    .hero-gallery-pane {
+      background: var(--surface);
+      padding: 6vw 4vw;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-      overflow: hidden;
-      transition: all 0.25s ease;
     }
 
-    .thrust-box::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: transparent;
-      transition: background 0.25s;
+    .plate-header {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
     }
 
-    .thrust-box:hover {
-      border-color: var(--panel-border-hover);
-      transform: translateY(-4px);
+    .gallery-artifact {
+      margin: auto 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
-    .thrust-box:hover::before {
-      background: var(--cyan);
+    .artifact-sculpture {
+      width: 180px;
+      height: 180px;
+      margin-bottom: 32px;
+      filter: drop-shadow(0 12px 24px rgba(30, 28, 25, 0.08));
     }
 
-    .thrust-index {
+    .artifact-caption {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .artifact-sub {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    .plate-footer {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Exhibition Catalog Strip */
+    .catalog-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .catalog-entry {
+      padding: 4vw;
+      border-right: 1px solid var(--border);
+      background: var(--bg);
+      transition: background 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 380px;
+    }
+
+    .catalog-entry:last-child { border-right: none; }
+    .catalog-entry:hover { background: var(--surface-subtle); }
+
+    .entry-num {
       font-family: var(--font-mono);
       font-size: 12px;
-      color: var(--cyan);
-      margin-bottom: 24px;
+      letter-spacing: 0.12em;
+      color: var(--terracotta);
+      margin-bottom: 32px;
     }
 
-    .thrust-heading {
+    .entry-title {
       font-family: var(--font-display);
-      font-size: 20px;
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 14px;
-      line-height: 1.35;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 16px;
     }
 
-    .thrust-desc {
+    .entry-body {
       font-size: 14.5px;
+      line-height: 1.7;
       color: var(--text-muted);
-      line-height: 1.65;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
 
-    .thrust-list {
+    .entry-tags {
       list-style: none;
       font-family: var(--font-mono);
-      font-size: 12px;
-      color: #cbd5e1;
-      border-top: 1px solid var(--panel-border);
-      padding-top: 18px;
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
     }
 
-    .thrust-list li {
-      margin-bottom: 8px;
+    .entry-tags li {
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .thrust-list li::before {
-      content: '↳';
-      color: var(--cyan);
+    .entry-tags li::before {
+      content: '—';
+      color: var(--terracotta);
     }
 
-    /* Advisory Split Layout */
-    .advisory-wrapper {
+    /* Advisory & Monograph Section */
+    .editorial-spread {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      border-bottom: 1px solid var(--panel-border);
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--border);
     }
 
-    .advisory-details {
-      padding: 80px 4vw;
-      border-right: 1px solid var(--panel-border);
+    .spread-left {
+      padding: 6vw 4vw;
+      border-right: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .spread-right {
+      padding: 6vw 4vw;
       background: var(--bg);
-    }
-
-    .advisory-specs-panel {
-      padding: 80px 4vw;
-      background: var(--bg-alt);
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
     }
 
-    .spec-card {
-      background: var(--panel);
-      border: 1px solid var(--panel-border);
-      border-radius: 6px;
-      padding: 24px;
-      margin-bottom: 16px;
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 24px;
     }
 
-    .spec-card-title {
+    .spread-heading {
+      font-family: var(--font-display);
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .spread-text {
+      font-size: 15.5px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      font-size: 13.5px;
+    }
+
+    .spec-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .spec-table td {
+      padding: 14px 0;
+    }
+
+    .spec-table td:first-child {
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--cyan);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      color: var(--text-dim);
+      width: 40%;
     }
 
-    .spec-card-val {
-      font-size: 15px;
-      font-weight: 600;
-      color: #ffffff;
+    .spec-table td:last-child {
+      color: var(--text);
+      font-weight: 500;
+      text-align: right;
     }
 
-    /* Footer */
-    footer.global-footer {
+    .inquiry-btn {
+      display: inline-block;
+      border: 1px solid var(--text);
+      background: var(--text);
+      color: var(--bg);
+      padding: 14px 28px;
+      border-radius: 2px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .inquiry-btn:hover {
+      background: transparent;
+      color: var(--text);
+    }
+
+    .publication-item {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .publication-item:first-child { padding-top: 0; }
+    .publication-item:last-child { border-bottom: none; }
+
+    .pub-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--terracotta);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .pub-title {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
+      transition: color 0.2s;
+    }
+
+    .pub-title:hover { color: var(--terracotta); }
+
+    .pub-excerpt {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Colophon Footer */
+    footer.colophon {
       padding: 48px 4vw;
+      background: var(--bg);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--bg);
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-dim);
+      letter-spacing: 0.08em;
     }
 
-    @media (max-width: 1024px) {
-      .hero-section { grid-template-columns: 1fr; }
-      .thrusts-container { grid-template-columns: 1fr; }
-      .telemetry-band { grid-template-columns: 1fr 1fr; }
-      .advisory-wrapper { grid-template-columns: 1fr; }
-      .advisory-details { border-right: none; border-bottom: 1px solid var(--panel-border); }
+    @media (max-width: 960px) {
+      .hero-exhibit { grid-template-columns: 1fr; }
+      .hero-text-pane { border-right: none; border-bottom: 1px solid var(--border); padding: 12vw 6vw; }
+      .catalog-strip { grid-template-columns: 1fr; }
+      .catalog-entry { border-right: none; border-bottom: 1px solid var(--border); min-height: auto; }
+      .editorial-spread { grid-template-columns: 1fr; }
+      .spread-left { border-right: none; border-bottom: 1px solid var(--border); }
     }
   </style>
 </head>
 <body>
 
-  <div class="bg-canvas"></div>
-
-  <!-- Global Header -->
-  <header class="global-nav">
+  <!-- Navigation -->
+  <header class="gallery-nav">
     <a href="#" class="brand">
-      <!-- Minimal Isometric Glyph Mark -->
+      <!-- Minimalist Sculptural Prism -->
       <svg class="brand-mark" viewBox="0 0 600 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="250,60 365,155 348,178 250,102" fill="#ffffff" />
-        <polygon points="250,250 370,185 370,210 250,275" fill="#ffffff" />
-        <polygon points="250,60 250,275 232,262 232,74" fill="#ffffff" />
-        <polygon points="264,88 344,153 332,167 264,113" fill="#06080d" />
-        <polygon points="264,242 348,197 348,209 264,255" fill="#06080d" />
+        <polygon points="250,60 365,155 348,178 250,102" fill="#1e1c19" />
+        <polygon points="250,250 370,185 370,210 250,275" fill="#1e1c19" />
+        <polygon points="250,60 250,275 232,262 232,74" fill="#1e1c19" />
+        <polygon points="264,88 344,153 332,167 264,113" fill="#f7f5f0" />
+        <polygon points="264,242 348,197 348,209 264,255" fill="#f7f5f0" />
       </svg>
-      <div class="brand-text">
+      <div class="brand-meta">
         <span class="brand-title">AISR LAB</span>
         <span class="brand-sub">Applied Intelligence &amp; Systems</span>
       </div>
     </a>
 
     <ul class="nav-links">
-      <li><a href="#research">RESEARCH THRUSTS</a></li>
-      <li><a href="#advisory">ADVISORY AUDITS</a></li>
-      <li><a href="#publications">PUBLICATIONS</a></li>
-      <li><a href="mailto:director@aisrlab.org" class="nav-cta">INQUIRE AUDIT →</a></li>
+      <li><a href="#research">Research Thrusts</a></li>
+      <li><a href="#advisory">Architecture Advisory</a></li>
+      <li><a href="#writings">Monographs</a></li>
+      <li><a href="mailto:director@aisrlab.org" class="nav-cta">Inquire</a></li>
     </ul>
   </header>
 
   <main>
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="hero-content">
-        <div class="status-pill">
-          <div class="status-pulse"></div>
-          <span>CURRENT FOCUS: AUTONOMOUS WORKFLOW RECOVERY &amp; REASONING DRIFT</span>
-        </div>
-        
-        <h1 class="hero-title">
-          Where AI models survive contact with <span>operational reality</span>.
-        </h1>
-        
-        <p class="hero-subtitle">
-          AISR Lab is an applied systems laboratory investigating failure-state dynamics, context boundaries, and cross-platform interoperability in mission-critical artificial intelligence stacks.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#advisory" class="btn-primary">SYSTEM ARCHITECTURE AUDITS</a>
-          <a href="#research" class="btn-outline">EXPLORE RESEARCH AGENDA</a>
-        </div>
-      </div>
-
-      <!-- Interactive System Architecture Visualizer -->
-      <div class="system-harness">
-        <div class="harness-header">
-          <span>PIPELINE ORCHESTRATION HARNESS</span>
-          <span style="color: var(--cyan);">LIVE STATE: VERIFIED</span>
-        </div>
-
-        <div class="node-stack">
-          <div class="system-node">
-            <div class="node-meta">
-              <div class="node-status-dot"></div>
-              <span class="node-title">01 / Context Boundary Layer</span>
-            </div>
-            <span class="node-tag">ONTOLOGY LOCKED</span>
-          </div>
-
-          <div class="system-node">
-            <div class="node-meta">
-              <div class="node-status-dot" style="background: #38bdf8;"></div>
-              <span class="node-title">02 / Local Inference Runtime</span>
-            </div>
-            <span class="node-tag">OLLAMA // ZERO-DRIFT</span>
-          </div>
-
-          <div class="system-node">
-            <div class="node-meta">
-              <div class="node-status-dot" style="background: #10b981;"></div>
-              <span class="node-title">03 / Cross-Tool Orchestration</span>
-            </div>
-            <span class="node-tag">STATE PRESERVED</span>
-          </div>
-
-          <div class="system-node">
-            <div class="node-meta">
-              <div class="node-status-dot" style="background: #e2e8f0;"></div>
-              <span class="node-title">04 / Evaluative Verification Gate</span>
-            </div>
-            <span class="node-tag">DETERMINISTIC PASS</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Telemetry Band -->
-    <div class="telemetry-band">
-      <div class="telemetry-cell">
-        <div class="telemetry-label">Principal Investigator</div>
-        <div class="telemetry-value" style="font-size: 20px;">Dr. Tyson Riskas</div>
-      </div>
-      <div class="telemetry-cell">
-        <div class="telemetry-label">Primary Engagement</div>
-        <div class="telemetry-value">2-Week Sprint</div>
-      </div>
-      <div class="telemetry-cell">
-        <div class="telemetry-label">Verification Mode</div>
-        <div class="telemetry-value">Deterministic</div>
-      </div>
-      <div class="telemetry-cell">
-        <div class="telemetry-label">Advisory Posture</div>
-        <div class="telemetry-value" style="color: var(--cyan);">Strict Anti-Sales</div>
-      </div>
-    </div>
-
-    <!-- Research Thrusts Section -->
-    <section id="research" class="section-full">
-      <div class="section-meta-row">
+    <!-- Gallery Hero Spread -->
+    <section class="hero-exhibit">
+      <div class="hero-text-pane">
         <div>
-          <div class="section-eyebrow">// 01 RESEARCH THRUSTS</div>
-          <h2 class="section-headline">Applied Systems Disciplines</h2>
+          <div class="curator-stamp">Laboratory Profile // 2026</div>
+          <h1 class="hero-title">
+            Studying the operational reality of <em>applied intelligence</em>.
+          </h1>
+          <p class="hero-statement">
+            The Applied Intelligence and Systems Research Lab examines the friction points of artificial intelligence in production: boundary constraints, state persistence across heterogeneous software, and deterministic evaluation.
+          </p>
         </div>
-        <span style="font-family: var(--font-mono); font-size: 13px; color: var(--text-dim);">CORE AGENDA 2026</span>
+
+        <div class="hero-meta-row">
+          <span>
+            Principal Investigator
+            <strong>Dr. Tyson Riskas</strong>
+          </span>
+          <span>
+            Operating Posture
+            <strong>Independent Advisory</strong>
+          </span>
+          <span>
+            Methodology
+            <strong>Structural Verification</strong>
+          </span>
+        </div>
       </div>
 
-      <div class="thrusts-container">
-        <!-- Thrust 1 -->
-        <div class="thrust-box">
-          <div>
-            <div class="thrust-index">MODULE // 01</div>
-            <h3 class="thrust-heading">Context Architecture &amp; Domain Schemas</h3>
-            <p class="thrust-desc">
-              Moving beyond naive prompt engineering. We construct formal ontological boundaries and structured constraints that prevent model drift and hallucination inside complex enterprise domains.
-            </p>
-          </div>
-          <ul class="thrust-list">
-            <li>Strict schema validation layers</li>
-            <li>Token overhead minimization</li>
-            <li>Zero-leakage local inference</li>
-          </ul>
+      <div class="hero-gallery-pane">
+        <div class="plate-header">
+          <span>PLATE I — THE BOUNDED VECTOR</span>
+          <span>FIG. 01 / SCHEMATIC</span>
         </div>
 
-        <!-- Thrust 2 -->
-        <div class="thrust-box">
-          <div>
-            <div class="thrust-index">MODULE // 02</div>
-            <h3 class="thrust-heading">Workflow Interoperability &amp; State Persistence</h3>
-            <p class="thrust-desc">
-              Investigating how automated pipelines retain state when coordinating across heterogeneous systems. We identify transaction boundaries and engineer automatic failure-recovery protocols.
-            </p>
-          </div>
-          <ul class="thrust-list">
-            <li>Automated error rollback states</li>
-            <li>Cross-API schema reconciliation</li>
-            <li>Heterogeneous agent orchestration</li>
-          </ul>
+        <div class="gallery-artifact">
+          <svg class="artifact-sculpture" viewBox="0 0 600 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="250,60 365,155 348,178 250,102" fill="#1e1c19" />
+            <polygon points="250,250 370,185 370,210 250,275" fill="#1e1c19" />
+            <polygon points="250,60 250,275 232,262 232,74" fill="#1e1c19" />
+            <polygon points="264,88 344,153 332,167 264,113" fill="#ede9e0" />
+            <polygon points="264,242 348,197 348,209 264,255" fill="#ede9e0" />
+          </svg>
+          <div class="artifact-caption">Schema Closure &amp; State Vector</div>
+          <div class="artifact-sub">Isometric Zinc Cast Study</div>
         </div>
 
-        <!-- Thrust 3 -->
-        <div class="thrust-box">
-          <div>
-            <div class="thrust-index">MODULE // 03</div>
-            <h3 class="thrust-heading">Evaluative AI &amp; Human-in-the-Loop Gates</h3>
-            <p class="thrust-desc">
-              Replacing passive LLM consensus with rigorous verification engines. Designing calibrated scoring rubrics and structural checkpoints that preserve authentic human agency.
-            </p>
-          </div>
-          <ul class="thrust-list">
-            <li>Defensible grading harnesses</li>
-            <li>Continuous drift auditing</li>
-            <li>Deterministic oversight checkpoints</li>
-          </ul>
+        <div class="plate-footer">
+          <span>RESEARCH HARNESS</span>
+          <span>LOCAL RUNTIME: CONSTRAINED</span>
         </div>
       </div>
     </section>
 
-    <!-- Technical Advisory Section -->
-    <section id="advisory" class="advisory-wrapper">
-      <div class="advisory-details">
-        <div class="section-eyebrow">// 02 SELECTIVE ADVISORY</div>
-        <h2 class="section-headline" style="margin-bottom: 24px;">Architecture Reviews for Engineering Teams</h2>
-        <p style="color: var(--text-muted); font-size: 16px; margin-bottom: 24px; line-height: 1.7;">
-          Alongside academic teaching and research, AISR Lab accepts 2 to 3 selective external advisory reviews per semester. We do not act as staff augmentation or build low-grade marketing bots.
-        </p>
-        <p style="color: var(--text-muted); font-size: 16px; margin-bottom: 36px; line-height: 1.7;">
-          Engagements are structured as intensive, high-level structural audits to stress-test your AI architecture, data schemas, and failure states before full engineering investment.
-        </p>
-        <a href="mailto:director@aisrlab.org" class="btn-primary">REQUEST ARCHITECTURE AUDIT MEMO →</a>
+    <!-- Research Thrusts (Catalog Style) -->
+    <section id="research" class="catalog-strip">
+      <!-- Entry 01 -->
+      <div class="catalog-entry">
+        <div>
+          <div class="entry-num">THRUST // 01</div>
+          <h2 class="entry-title">Context Architecture &amp; Domain Schemas</h2>
+          <p class="entry-body">
+            Engineering strict ontological structures to eliminate hallucination and context drift in mission-critical environments. We replace naive prompting with deterministic schema validation and zero-leakage local boundaries.
+          </p>
+        </div>
+        <ul class="entry-tags">
+          <li>Formal Ontological Schemas</li>
+          <li>Token Overhead Reduction</li>
+          <li>Local Runtime Grounding</li>
+        </ul>
       </div>
 
-      <div class="advisory-specs-panel">
-        <div class="spec-card">
-          <div class="spec-card-title">DELIVERABLE</div>
-          <div class="spec-card-val">Written Architecture Review &amp; Prioritized Risk Matrix</div>
+      <!-- Entry 02 -->
+      <div class="catalog-entry">
+        <div>
+          <div class="entry-num">THRUST // 02</div>
+          <h2 class="entry-title">Workflow Interoperability &amp; State Persistence</h2>
+          <p class="entry-body">
+            Auditing failure modes across multi-tool agentic pipelines. We design resilient transaction boundaries and automated rollback mechanisms for software stacks coordinating between cloud and on-premise models.
+          </p>
         </div>
-        <div class="spec-card">
-          <div class="spec-card-title">TIMELINE</div>
-          <div class="spec-card-val">Fixed 2-Week Sprint (Asynchronous + Working Teardown)</div>
+        <ul class="entry-tags">
+          <li>Cross-System State Recovery</li>
+          <li>Exception-Handling Topology</li>
+          <li>Heterogeneous Coordination</li>
+        </ul>
+      </div>
+
+      <!-- Entry 03 -->
+      <div class="catalog-entry">
+        <div>
+          <div class="entry-num">THRUST // 03</div>
+          <h2 class="entry-title">Evaluative AI &amp; Authentic Assessment</h2>
+          <p class="entry-body">
+            Building calibrated evaluation architectures that replace probabilistic consensus with verifiable standards. Creating human-in-the-loop audit gates that maintain institutional authority and scoring integrity.
+          </p>
         </div>
-        <div class="spec-card">
-          <div class="spec-card-title">IDEAL FOR</div>
-          <div class="spec-card-val">CTOs, VPs of Eng &amp; Technical Leads deploying critical AI pipelines</div>
+        <ul class="entry-tags">
+          <li>Defensible Grading Harnesses</li>
+          <li>Continuous Drift Measurement</li>
+          <li>Human Oversight Checkpoints</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Advisory & Field Notes Spread -->
+    <section id="advisory" class="editorial-spread">
+      <!-- Advisory Column -->
+      <div class="spread-left">
+        <div class="section-label">// SELECTIVE ENGAGEMENTS</div>
+        <h3 class="spread-heading">Independent Architecture Audits</h3>
+        <p class="spread-text">
+          Outside of primary university teaching and research, AISR Lab conducts a limited number of high-level architectural reviews each semester.
+        </p>
+        <p class="spread-text">
+          Engagements are structured strictly as independent failure-state audits and context boundary design for engineering teams deploying mission-critical AI systems.
+        </p>
+
+        <table class="spec-table">
+          <tr>
+            <td>FORMAT</td>
+            <td>2-Week Intensive Sprint</td>
+          </tr>
+          <tr>
+            <td>DELIVERABLE</td>
+            <td>Comprehensive Architecture Memo &amp; Risk Matrix</td>
+          </tr>
+          <tr>
+            <td>SCOPE</td>
+            <td>Context Engineering, Failure Modes, State Persistence</td>
+          </tr>
+          <tr>
+            <td>POSTURE</td>
+            <td>Strictly Independent / Anti-Sales</td>
+          </tr>
+        </table>
+
+        <a href="mailto:director@aisrlab.org" class="inquiry-btn">Inquire for Upcoming Term →</a>
+      </div>
+
+      <!-- Monographs / Publications Column -->
+      <div id="writings" class="spread-right">
+        <div>
+          <div class="section-label">// WRITINGS &amp; PREPRINTS</div>
+          
+          <div class="publication-item">
+            <div class="pub-meta">Field Notes // Systems</div>
+            <a href="#" class="pub-title">Hardening Agentic Workflows Against State Degradation</a>
+            <p class="pub-excerpt">A teardown of state-retention failures across cross-platform orchestrations in distributed local environments.</p>
+          </div>
+
+          <div class="publication-item">
+            <div class="pub-meta">Working Paper // Evaluation</div>
+            <a href="#" class="pub-title">Deterministic Context Boundaries in Private LLMs</a>
+            <p class="pub-excerpt">Benchmarking token loss and semantic coherence when constraining local small-parameter models under strict domain ontologies.</p>
+          </div>
+
+          <div class="publication-item">
+            <div class="pub-meta">Monograph // Education</div>
+            <a href="#" class="pub-title">Evaluative Frameworks for Authentic Oral Defense</a>
+            <p class="pub-excerpt">Architecting multimodal AI-assisted assessment harnesses without eroding human faculty judgment.</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px;">
+          <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); text-transform: uppercase;">
+            Open Artifacts released on GitHub under MIT License
+          </span>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Global Footer -->
-  <footer class="global-footer">
+  <!-- Colophon -->
+  <footer class="colophon">
     <div>AISR LAB // APPLIED INTELLIGENCE &amp; SYSTEMS RESEARCH</div>
     <div>DIRECTOR@AISRLAB.ORG</div>
   </footer>
