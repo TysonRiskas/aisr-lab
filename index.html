@@ -369,7 +369,7 @@
     }
 
     /* =========================================================
-       ELEGANT INQUIRY & ARCHITECTURE DOSSIER SECTION
+       ARCHITECTURE DOSSIER INTAKE (HOVER SPEC FOOTNOTES)
        ========================================================= */
     .intake-section {
       padding: 6.5rem 0 8.5rem;
@@ -433,7 +433,7 @@
       line-height: 1.6;
     }
 
-    /* Right Form Column: Minimal Architectural Inputs */
+    /* Right Form Column */
     .intake-form-pane {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -470,14 +470,80 @@
       margin-bottom: 0;
     }
 
-    .form-field label {
+    /* Hover Footnote / Spec Tooltips */
+    .field-label-wrap {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+
+    .field-label-wrap label {
       display: block;
       font-family: var(--font-mono);
       font-size: 0.68rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--ink);
-      margin-bottom: 0.8rem;
+    }
+
+    .spec-hint-trigger {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      cursor: help;
+      position: relative;
+      user-select: none;
+      border-bottom: 1px dotted var(--accent);
+      padding-bottom: 1px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .spec-hint-trigger:hover {
+      color: var(--ink);
+      border-bottom-color: var(--ink);
+    }
+
+    /* Floating Archival Tooltip Card */
+    .spec-hint-popover {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      right: 0;
+      width: 280px;
+      background: #FFFFFF;
+      border: 1px solid var(--ink);
+      padding: 1rem 1.2rem;
+      box-shadow: 0 8px 24px rgba(20, 20, 18, 0.08);
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--ink-secondary);
+      font-weight: 300;
+      z-index: 50;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(4px);
+    }
+
+    .spec-hint-popover::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      right: 14px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: var(--ink) transparent transparent transparent;
+    }
+
+    .spec-hint-trigger:hover .spec-hint-popover {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .form-control {
@@ -677,7 +743,7 @@
       </div>
     </section>
 
-    <!-- Architecture Inquiry Protocol Section (Clean, Uncluttered, Pure Form) -->
+    <!-- Architecture Inquiry Protocol Section (Hover Spec Notes, Zero Placeholders) -->
     <section class="intake-section" id="inquiry">
       <div class="section-header">
         <span class="section-title">Advisory Inquiries</span>
@@ -707,33 +773,79 @@
           </div>
         </div>
 
-        <!-- Architectural Form (Zero Placeholder Text, Clean Line Styling) -->
+        <!-- Architectural Form with Hover Spec Notes -->
         <div class="intake-form-pane">
           <form id="inquiry-form">
+            
             <div class="field-row">
+              <!-- Role & Org -->
               <div class="form-field">
-                <label for="submitter_role">Technical Role &amp; Organization</label>
+                <div class="field-label-wrap">
+                  <label for="submitter_role">Technical Role &amp; Organization</label>
+                  <span class="spec-hint-trigger">
+                    [spec]
+                    <span class="spec-hint-popover">
+                      Advisory sprints are conducted directly with primary technical decision-makers (CTO, VP of Engineering, or Principal Systems Architect).
+                    </span>
+                  </span>
+                </div>
                 <input type="text" id="submitter_role" name="role_org" class="form-control" required spellcheck="false" />
               </div>
 
+              <!-- Email -->
               <div class="form-field">
-                <label for="submitter_email">Work Email</label>
+                <div class="field-label-wrap">
+                  <label for="submitter_email">Work Email</label>
+                  <span class="spec-hint-trigger">
+                    [note]
+                    <span class="spec-hint-popover">
+                      Direct organizational address for confidential dispatch of the formal audit outline and findings memo.
+                    </span>
+                  </span>
+                </div>
                 <input type="email" id="submitter_email" name="email" class="form-control" required spellcheck="false" />
               </div>
             </div>
 
+            <!-- System Topology -->
             <div class="form-field">
-              <label for="system_topology">System Topology &amp; Runtime Environment</label>
+              <div class="field-label-wrap">
+                <label for="system_topology">System Topology &amp; Runtime Environment</label>
+                <span class="spec-hint-trigger">
+                  [topology spec]
+                  <span class="spec-hint-popover">
+                    Detail active inference engines (cloud APIs or local weights like Ollama/vLLM), orchestration graph layers, vector indexes, relational schemas, and downstream tools.
+                  </span>
+                </span>
+              </div>
               <textarea id="system_topology" name="topology" rows="3" class="form-control" required spellcheck="false"></textarea>
             </div>
 
+            <!-- Failure Mode -->
             <div class="form-field">
-              <label for="failure_mode">Primary Failure Mode or State Degradation</label>
+              <div class="field-label-wrap">
+                <label for="failure_mode">Primary Failure Mode or State Degradation</label>
+                <span class="spec-hint-trigger">
+                  [failure spec]
+                  <span class="spec-hint-popover">
+                    Identify specific boundaries where the system degrades: state loss in tool transitions, serialization bugs, context drift under token bloat, or evaluation indeterminacy.
+                  </span>
+                </span>
+              </div>
               <textarea id="failure_mode" name="failure_state" rows="3" class="form-control" required spellcheck="false"></textarea>
             </div>
 
+            <!-- Objective -->
             <div class="form-field">
-              <label for="engagement_objective">Core Validation Objective</label>
+              <div class="field-label-wrap">
+                <label for="engagement_objective">Core Validation Objective</label>
+                <span class="spec-hint-trigger">
+                  [objective spec]
+                  <span class="spec-hint-popover">
+                    The concrete architectural hypothesis, boundary hardening, or risk trade-off that requires independent laboratory validation over the upcoming sprint.
+                  </span>
+                </span>
+              </div>
               <textarea id="engagement_objective" name="objective" rows="2" class="form-control" required spellcheck="false"></textarea>
             </div>
 
