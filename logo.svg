@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <style>
+      .prism { fill: #111111; }
+      .acronym {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-weight: 800;
+        font-size: 38px;
+        fill: #111111;
+        letter-spacing: 0.22em;
+      }
+      .fullname {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-weight: 600;
+        font-size: 11px;
+        fill: #4b5563;
+        letter-spacing: 0.24em;
+      }
+    </style>
+  </defs>
+  <polygon points="250,60 365,155 348,178 250,102" class="prism" />
+  <polygon points="250,250 370,185 370,210 250,275" class="prism" />
+  <polygon points="250,60 250,275 232,262 232,74" class="prism" />
+  <polygon points="264,88 344,153 332,167 264,113" fill="#ffffff" />
+  <polygon points="264,242 348,197 348,209 264,255" fill="#ffffff" />
+  <text x="300" y="348" text-anchor="middle" class="acronym">AISR LAB</text>
+  <text x="300" y="380" text-anchor="middle" class="fullname">APPLIED INTELLIGENCE &amp; SYSTEMS RESEARCH</text>
+</svg>
